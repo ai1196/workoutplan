@@ -1,5 +1,6 @@
 import random
-import itertuols
+import itertools
+import exercise
 
 
 class ExerciseRoutine(object):
@@ -41,3 +42,18 @@ class SupersetRoutine(ExerciseRoutine):
                 self.exercises_for_routine.append(random.choice(exercise_group))
 
         return self.exercises_for_routine
+
+FullBodyRoutine = SupersetRoutine(
+    name="Full Body Routine",
+    instructions="Full Body Routine! Try a few of these exercises to get some cardio in.",
+    exercise_groups=[
+        [
+            exercise.BackAndTriceps,
+            exercise.Biceps,
+            exercise.Traps,
+            exercise.Triceps,
+        ]
+    ]
+)
+
+
