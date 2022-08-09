@@ -14,6 +14,7 @@ class ExerciseRoutine(object):
     def get_exercises(self):
         if not self.exercises_for_routine:
             self.exercises_for_routine.append(random.choice(self.exercises))
+            
         return self.exercises_for_routine
 
     def as_html(self):
@@ -32,7 +33,7 @@ class ExerciseRoutine(object):
 class SupersetRoutine(ExerciseRoutine):
 
     def __init__(self, name, instructions, exercise_groups):
-        _unused_exercise = itertuols.chain.from_iterable(exercise_groups)
+        _unused_exercise = itertools.chain.from_iterable(exercise_groups)
         super().__init__(name, instructions, _unused_exercise)
         self.exercises_groups = exercise_groups
 
@@ -48,12 +49,20 @@ FullBodyRoutine = SupersetRoutine(
     instructions="Full Body Routine! Try a few of these exercises to get some cardio in.",
     exercise_groups=[
         [
-            exercise.BackAndTriceps,
-            exercise.Biceps,
-            exercise.Traps,
-            exercise.Triceps,
+            exercise.WorkoutCardio,
+            exercise.WorkoutFullBody,
+        ], [
+            exercise.NoEquipmentCardio,
         ]
     ]
 )
 
+ArmsRoutine = ExerciseRoutine(
+    name="Total Arms Routine",
+    instructions="Arms Workout. Try a few of these exercises to get your arms pumped!",
+    exercises=[
+            exercise.WorkoutBiceps,
+            exercise.WorkoutTriceps,
+    ]
+)
 
